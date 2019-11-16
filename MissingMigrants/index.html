@@ -3,7 +3,7 @@
 <head>
 	<title>Missing Migrants Project</title>
 	<style type="text/css">
-		header{
+		header {
 			display: block;
 		}
 		.page-header {
@@ -20,10 +20,40 @@
 
 		.page-header .header-wrapper {
 		    padding: 0 15px;
+		    display: flex;
+    		justify-content: space-between;
 		}
 
 		#header-spacer {
 		    height: 60px;
+		}
+
+		.page-header .social-links {
+		    display: flex;
+		}
+
+		.page-header .social: first-of-type {
+		    margin-right: 10px;
+		}
+
+		.page-header .icon {
+		    font-size: 15px;
+		    color: #808285;
+		    margin-top: 13px;
+		    vertical-align: middle;
+		}
+
+		.grayscale { filter: grayscale(100%); }
+
+		.icon {
+		    font-family: 'fte-icons';
+		    speak: none;
+		    font-style: normal;
+		    font-weight: 400;
+		    font-variant: normal;
+		    text-transform: none;
+		    line-height: 1;
+		    -webkit-font-smoothing: antialiased;
 		}
 
 		#intro-spacer {
@@ -107,6 +137,11 @@
 		    font: inherit;
 		    vertical-align: baseline;
 		    color: #222;
+		}
+
+		a: -webkit-any-link {
+		    color: -webkit-link;
+		    cursor: pointer;
 		}
 
 		p {
@@ -199,6 +234,18 @@
 	<header class="page-header">
 		<div class="header-wrapper">
 			<h3>Vanessa Liang</h3>
+			<div class="social-links">
+				<a class="social share-linkedin" id="linkedin-sharer" href="https://www.linkedin.com/in/vanessaaleung/" target="_blank">
+					<div class="icon icon-linkedin"  style="padding-right: 10px">
+						<img class="grayscale" src="linkedin.png" height="20px">
+					</div>
+				</a>
+				<a class="social share-medium" id="medium-sharer" href="#" target="_blank">
+					<div class="icon icon-medium">
+						<img class="grayscale" src="medium.png" height="25px">
+					</div>
+				</a>
+			</div>
 		</div>
 	</header>
 	<div id="header-spacer"></div>
