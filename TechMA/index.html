@@ -25,20 +25,20 @@
 	</header>
 	<div id="header-spacer"></div>
 	<div class="container">
-		<div id = "intro">
+		<!-- <div id = "intro">
 			<h1>The Fitbit Acquisition: How It Compares</h1>
 			<h2 class="article-subtitle">and the tech giants' acquisitions for the past 20 years</h2>
 			<p class = "byline">By <a href="https://www.linkedin.com/in/vanessaaleung/">Vanessa Liang</a></p>
-		</div>
+		</div> -->
 	</div>
 	<div id="intro-spacer"></div>
-	<div class='tableauPlaceholder' id='viz1576520548391' style='position: relative'>
+	<div class='tableauPlaceholder' id='viz1576520548391' style='margin: auto; width: 50%'>
 		<noscript>
 			<a href='#'>
 			<img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TechMA_15762658085230&#47;Dashboard1&#47;1_rss.png' style='border: none' />
 			</a>
 		</noscript>
-			<object class='tableauViz'  style='display:none; position: relative; left:calc(50% - 320px)'>
+			<object class='tableauViz'  style='display:none; '>
 				<param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
 				<param name='embed_code_version' value='3' /> 
 				<param name='site_root' value='' />
@@ -53,21 +53,35 @@
 				<param name='display_count' value='yes' />
 				<param name='filter' value='publish=yes' />
 			</object>
-	</div>                                
-	<p class="article-text">
-		<!-- <img class="static-image" src="Loc_Dash.png"> -->                       
-	</p> 
-	<div class ="article-text" id="map-holder">
-		<!-- <select id="selectButton"></select> -->
-		<!-- <svg id="Map"></svg> -->
-		
-	</div>
+	</div>   
+	<div id="header-spacer"></div>                             
 	<div class = "container">
 	   <p class="article-text">On November 1, Google confirmed that it will pay $7.35 per share for the wearables company in an all-cash deal that values <a href="https://www.crunchbase.com/organization/fitbit">Fitbit</a> at $2.1 billion. It is common for big tech companies to acquire small ones working on different technologies. Since 1987, there have been about 996 merge and acquisition from the seven big tech companies: Alphabet, Apple, Facebook, Microsoft, IBM, Twitter, and Yahoo!.</p>
 	   <p class="article-text">
 			<img class="static-image" src="img/Value~Time.png">
 	   </p>
-	   <p class="article-text">This year, IBM closed its <a href="https://techcrunch.com/2019/08/01/with-the-acquisition-closed-ibm-goes-all-in-on-red-hat/">acquisition</a> of <a href="https://www.crunchbase.com/organization/red-hat">Red Hat</a>, the Linux-based technologies provider, for $34 Billion, positioning the acquisition the top of all M&A of the seven companies. After Red Hat, the second biggest acquisition is Microsoft's <a href="https://techcrunch.com/2016/12/08/microsoft-officially-closes-its-26-2b-acquisition-of-linkedin/">acquisition</a> of LinkedIn, the largest social networking site focused on the working world.</p>
+	   <p class="article-text">This year, IBM closed its <a href="https://techcrunch.com/	2019/08/01/with-the-acquisition-closed-ibm-goes-all-in-on-red-hat/">acquisition</a> of <a href="https://www.crunchbase.com/organization/red-hat">Red Hat</a>, the Linux-based technologies provider, for $34 Billion, positioning the acquisition the top of all M&A of the seven companies. After Red Hat, the second biggest acquisition is Microsoft's <a href="https://techcrunch.com/2016/12/08/microsoft-officially-closes-its-26-2b-acquisition-of-linkedin/">acquisition</a> of LinkedIn, the largest social networking site focused on the working world.</p>
+		<div class='tableauPlaceholder' id='viz1576529172864' style='width:50%; margin: auto;'>
+			<noscript>
+				<a href='#'>
+					<img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TechMA_15762658085230&#47;Dash_Top20&#47;1_rss.png' style='border: none' />
+				</a>
+			</noscript>
+			<object class='tableauViz'  style='display:none; width:50%; margin: auto;'>
+				<param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+				<param name='embed_code_version' value='3' /> 
+				<param name='site_root' value='' />
+				<param name='name' value='TechMA_15762658085230&#47;Dash_Top20' />
+				<param name='tabs' value='no' />
+				<param name='toolbar' value='yes' />
+				<param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TechMA_15762658085230&#47;Dash_Top20&#47;1.png' /> 
+				<param name='animate_transition' value='yes' />
+				<param name='display_static_image' value='yes' />
+				<param name='display_spinner' value='yes' />
+				<param name='display_overlay' value='yes' />
+				<param name='display_count' value='yes' />
+			</object>
+   		</div>              
 	   <p class="article-text">
 			<img class="static-image"src="img/Value(Log)~Time (Alphabet).png">
 	   <p class="article-text"> The number of dead and missing rose sharply from 2014 to 2015, and experienced an significant increase in 2017. When breaking down the number to gender, the number of males victims was almost three times higher than the one of females.</p>
@@ -134,6 +148,16 @@
 	if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
 	else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
 	else { vizElement.style.width='100%';vizElement.style.height='2477px';}                     
+	var scriptElement = document.createElement('script');                    
+	scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+	vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+</script>
+<script type='text/javascript'>                    
+	var divElement = document.getElementById('viz1576529172864');                    
+	var vizElement = divElement.getElementsByTagName('object')[0];                    
+	if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='827px';} 
+	else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='827px';} 
+	else { vizElement.style.width='100%';vizElement.style.height='727px';}                     
 	var scriptElement = document.createElement('script');                    
 	scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
 	vizElement.parentNode.insertBefore(scriptElement, vizElement);                
