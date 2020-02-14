@@ -1,27 +1,29 @@
 #header {
-  font-size: 68px;
-  margin-top: 50px;
+  font-size: 60px;
+  margin-top: 35px;
   font-weight: normal;
+  font-family: "Great Vibes", cursive;
+  color: #f12469;
 }
 
 #msg {
   font-style: italic;
-  font-size: 25px;
+  font-size: 20px;
   color: grey;
 }
 
 #msg2 {
   font-style: italic;
-  font-size: 15px;
+  font-size: 10px;
   color: grey;
 }
 
 #button {
   border-radius: 30px;
-  height: 35px;
+  height: 30px;
   width: 400px;
   background-color: #f12469;
-  font-size: 20px;
+  font-size: 15px;
   color: #ffffff;
   margin:0 auto;
   padding-top: 10px;
@@ -35,10 +37,6 @@ body {
   text-align: center;
 }
 
-h1 {
-	font-family: "Great Vibes", cursive;
-	color: #f12469;
-}
 
 a {
   color: #ffffff;
