@@ -1,0 +1,46 @@
+#header {
+  font-size: 68px;
+  margin-top: 50px;
+  font-weight: normal;
+}
+
+#msg {
+  font-style: italic;
+  font-size: 25px;
+  color: grey;
+}
+
+#msg2 {
+  font-style: italic;
+  font-size: 15px;
+  color: grey;
+}
+
+#button {
+  border-radius: 30px;
+  height: 35px;
+  width: 400px;
+  background-color: #f12469;
+  font-size: 20px;
+  color: #ffffff;
+  margin:0 auto;
+  padding-top: 10px;
+}
+
+body {
+  font-family: "Libre Baskerville", serif;
+  border-width: 20px;
+  border-style: solid;
+  border-color: #fcd2d8;
+  text-align: center;
+}
+
+h1 {
+	font-family: "Great Vibes", cursive;
+	color: #f12469;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
