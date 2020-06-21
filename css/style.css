@@ -7,7 +7,7 @@
 
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *	Edit this section
 *
 * ======================================================= */
@@ -19,7 +19,7 @@ body {
   color: rgba(0, 0, 0, 0.7); }
   @media screen and (max-width: 992px) {
     body {
-      font-size: 16px; } 
+      font-size: 16px; }
       h2{
           text-align: center;
       }}
@@ -98,13 +98,14 @@ figure {
   position: relative; }
 
 #colorlib-aside {
-  padding-top: 3em;
+  /*padding-top: 3em;*/
+  padding-top: 200px;
   padding-bottom: 1px;
   float:left;
   width: 300px;
   position: fixed;
   z-index: 1001;
-    background-color: #f2f3f7;
+    /*background-color: #f2f3f7;*/
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
@@ -117,7 +118,7 @@ figure {
       -o-transform: translateX(-300px);
       transform: translateX(-300px);
       padding-top: 4em;
-	  background-color: #f2f3f7;
+	  /*background-color: #f2f3f7;*/
         height: auto;
       } }
   #colorlib-aside .author-img {
@@ -250,9 +251,9 @@ figure {
 #rcorners2 {
     border-radius: 15px;
   background: black;
-  padding: 20px; 
+  padding: 20px;
   width: 50%;
-  height: 40px; 
+  height: 40px;
 }
         #colorlib-aside .colorlib-footer ul li a {
           color: rgba(255, 255, 255, 0.3);
@@ -455,7 +456,7 @@ body.offcanvas {
     padding-bottom: 3em;
     padding-top: 2em;
     padding-right: 2em;
-    
+
 }
 #colorlib-footer2 .h2{
     color: red;
