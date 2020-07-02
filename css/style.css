@@ -113,6 +113,19 @@ h3{
   color: black;
 }
 
+#tagBtn {
+  font-family: 'Lato', sans-serif;
+  border: none;
+  color: #0265D6;
+  background-color: #F1F8FF;
+  padding: 5px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  outline: none;
+  margin-right: 10px;
+  border-radius: 7px;
+}
+
 figure {
   margin-bottom: 2.5em;
   float: left;
