@@ -1,0 +1,237 @@
+* {
+  font-family: 'Vollkorn', serif;
+}
+
+.row-header {
+  margin: 0px auto;
+  padding: 0px auto;
+}
+
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px 50px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+
+.footer {
+  background-color: #eee;
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+}
+
+.jumbotron  {
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+  background: #FFD7D2;
+  background-image: url('../images/jumbotron_bg.svg');
+  background-size: cover;
+  background-position: right;  
+}
+
+.address {
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f;
+}
+
+body {
+  padding: 50px 0px 0px 0px;
+  z-index: 0;
+}
+
+.navbar-light {
+  background-color: white;
+}
+
+.navbar-light .navbar-toggler {
+  border: none;
+}
+
+.btn-social-icon {
+  border: none;
+  border-radius: 20px;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.breadcrumb-item a:hover {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #EF9A9A;
+  border: none;
+  outline: none;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  background-color: #E57373;
+  outline: none;
+}
+
+.btn-non-smoke {
+  background-color: #9CCC65;
+  color: black;
+}
+
+.btn-non-smoke.active, .btn-non-smoke:focus, .btn-non-smoke:hover {
+  background-color: #33691E;
+  color: white;
+}
+
+.btn-info {
+  background-color: #FFE0B2;
+  border: none;
+}
+
+.btn-info:hover {
+  background-color: #FFB74D;
+}
+
+.btn-success {
+  background-color: #FFCCBC;
+  border: none;
+  color: black;
+}
+
+.btn-success:hover {
+  background-color: #FF8A65;
+}
+
+.form-bg {
+  background-color: #eee;
+  border-radius: 6%;
+  padding: 50px 50px 30px 50px;
+}
+
+.form-custom {
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  padding: 0px 20px 0px 20px;
+  height: 50px;
+}
+
+.btn-submit {
+  background-color: #EF9A9A;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  float: right;
+  padding: 10px 30px 10px 30px;
+  font-weight: bold;
+}
+
+.btn-submit:hover, .btn-submit:active, .btn-submit:focus {
+  background-color: #E57373;
+  outline: none;
+}
+
+.card {
+  border: none;
+}
+
+.card-header {
+  background-color: #343A40;
+  color: white;
+}
+
+.img-thumbnail {
+  border: none;
+  border-radius: 10px;
+}
+
+.badge {
+  font-size: 15px;
+}
+
+.btn-reserve {
+  background-color: white;
+  padding: 10px 30px 10px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.btn-reserve:hover, .btn-reserve:active, .btn-reserve:focus {
+  background-color: #eee;
+  outline: none;
+}
+
+.btn-submit-reserve {
+  background-color: #F8F9FA;
+  border: 1px solid #FFB74D;
+  border-radius: 20px;
+  padding: 10px 30px 10px 30px;
+  outline: none;
+  float: right;
+  font-weight: bold;
+} 
+
+.btn-submit-reserve:hover, .btn-submit-reserve:active, .btn-submit-reserve:focus {
+  background-color: #FFB74D;
+  outline: none;
+}
+
+.btn-cancel-reserve {
+  border-radius: 20px;
+  padding: 10px 30px 10px 30px;
+  margin-right: 10px;
+}
+
+.card-block {
+  padding: 10px 30px 10px 30px;
+}
+
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.carousel-item {
+height: 300px;
+}
+
+.carousel-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 300px;
+}
+
+#carouselButton {
+  right:0px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+}
+
+.carousel-caption {
+  text-align: right;
+  left: 300px;
+  color: black;
+  top: 20%;
+}
+
+.carousel-indicators li {
+  background-color: black;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  filter: invert(100%);
+}
+
+.reserve-modal {
+  background-color: #eee;
+}
+
