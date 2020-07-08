@@ -1,0 +1,54 @@
+html,
+body{
+    width: 100% !important;
+    min-height: 0px !important;
+    min-width: 0px;
+}
+
+@font-face {
+  font-family: "startrekFont";
+  src: url("./Stardate81316-aolE.ttf");
+}
+
+.welcome, .title, .subTitle, .summary, .xLabel, .yLabel, .description {
+  font-family: "startrekFont";
+}
+
+.svg-component {
+  background-image: url('images/bg.jpg');
+}
+
+div.description {	
+  position: absolute;			
+  text-align: center;			
+  width: 60px;					
+  height: 28px;					
+  padding: 2px;				
+  font: 12px sans-serif;		
+  background: lightsteelblue;	
+  border: 0px;		
+  border-radius: 8px;			
+  pointer-events: none;			
+}
+
+svg {
+  display: block;
+  margin: auto;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    /*padding-bottom: 100%;*/
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
