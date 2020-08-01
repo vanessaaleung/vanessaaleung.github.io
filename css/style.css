@@ -13,8 +13,42 @@
 * ======================================================= */
 * {
   font-family: 'IBM Plex Serif', serif;
-
 }
+
+.project-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 50px;
+  margin: 20px;
+  height: 300px;
+  border-radius: 5px;
+  display: flex;
+  overflow: hidden;
+}
+
+.project-card img {
+  margin-right: 20px;
+  transition: transform .5s ease;
+}
+
+.project-card img:hover {
+  transform: scale(2);
+}
+
+#tagBtn {
+  font-family: 'Lato', sans-serif;
+  border: none;
+  color: #0265D6;
+  background-color: #F1F8FF;
+  padding: 5px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  outline: none;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 7px;
+}
+
+/* Template */
 body {
   font-weight: 400;
   font-size: 15px;
@@ -111,19 +145,6 @@ h3{
 .topnav a:hover {
   background-color: #ddd;
   color: black;
-}
-
-#tagBtn {
-  font-family: 'Lato', sans-serif;
-  border: none;
-  color: #0265D6;
-  background-color: #F1F8FF;
-  padding: 5px 20px;
-  font-size: 12px;
-  font-weight: bold;
-  outline: none;
-  margin-right: 10px;
-  border-radius: 7px;
 }
 
 figure {
