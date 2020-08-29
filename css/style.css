@@ -16,22 +16,22 @@
 }
 
 .project-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 0px 56px -8px rgba(0, 0, 0, 0.18);
   padding: 50px;
   margin: 20px;
   height: 300px;
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex;
-  /*overflow: hidden;*/
 }
 
 .project-card img {
   margin-right: 20px;
   transition: transform .5s ease;
   object-fit: cover;
+  border-radius: 6px;
 }
 
-.project-card img:hover {
+.project-card .zoom-in:hover  {
   transform: scale(3);
   object-fit: contain;
 }
@@ -52,19 +52,21 @@
 
 .topnav {
   overflow: hidden;
-  border-bottom: 1px solid lightgray;
+  background-color: #F8F9FD;
+  font-weight: bold;
 }
 
 .topnav a {
   float: left;
   color: black;
   text-align: center;
-  padding: 14px 16px;
+  padding: 5px 16px 5px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+
 }
 
 .topnav a:hover  {
