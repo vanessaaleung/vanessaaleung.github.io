@@ -179,6 +179,7 @@
         var zeroLine = svg.append('path')
                           .attr('d', d3.line()([zeroLineStart, zeroLineEnd]))
                           .attr('stroke', 'lightgray')
+                          .attr('stroke-dasharray', 5.5)
                           .attr('opacity', '0.5')
 
         // Add growth description
