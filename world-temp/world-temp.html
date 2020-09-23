@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+  <head>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="header">
+      <h2>GISS Surface Temperature Analysis</h2>
+      <p>An estimate of global and hemispheric surface temperature change from 1880 to 2014</p>
+    </div>
+    <div id="graph">
+      <div class="description">
+        <p>The mean temperature has increased dramatically over the last 13 decades. <br/>
+        Most of the time, the temperature in the northern hemisphere is higher than the one in the south.</p>
+      </div>
+    </div>
+    <div class="source">
+      <p>Source: NASA, <a href='http://data.giss.nasa.gov/gistemp/'>GISTEMP site</a></p>
+    </div>
+  </body>
+  <script>
+ 
+    // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 30, bottom: 30, left: 60},
+    width = document.getElementById('graph').clientWidth - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+    // Add the legend
+    var category = ["Global", "NHem", "SHem"]
+    var color = d3.scaleOrdinal()
+                  .domain(category)
+                  .range(["#2a9d8f", "#e76f51", "#e9c46a"])
+
+    var svgLegend = d3.select('#graph')
+                      .append("svg")
+                      .attr("width", width + margin.left + margin.right)
+                      .attr("height", "40px")
+                      .append('g')
+                      .attr('class', 'gLegend')
+                      .attr("transform", "translate(" + ( 45 ) + "," + 30 + ")")
+
+    var legend = svgLegend.selectAll('.legend')
+                          .data(category)
+                          .enter().append('g')
+                          .attr("class", "legend")
+                          // .attr("transform", function (d, i) {return "translate(0," + i * 30 + ")"})
+                          .attr("transform", function (d, i) {return "translate(" + i * 100 + ", 0)"})
+
+    var legendCircle = legend.append("circle")
+                              .attr("class", "legend-node")
+                              .attr("cx", 0)
+                              .attr("cy", 0)
+                              .attr("r", 6)
+                              .style("fill", d=>color(d))
+
+    var legendText = legend.append("text")
+                            .attr("class", "legend-text")
+                            .attr("x", 12)
+                            .attr("y", 3)
+                            .style("fill", "black")
+                            .style("font-size", 12)
+                            .text(d=>d)
+    // append the svg object to the body of the page
+    var svg = d3.select("#graph")
+                .append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                  .attr("transform",
+                        "translate(" + margin.left + "," + margin.top * 0.6 + ")");
+
+    // format year
+    var parseYear = d3.timeParse("%Y");
+
+    d3.csv('https://raw.githubusercontent.com/vanessaaleung/DS-notes/master/data-mining/data-viz/world-temp-project/data.csv')
+      .then(function(data) {
+        data.forEach(function(d) {
+          d.Year = parseYear(d.Year);
+          d.Glob = +d.Glob;
+          d.NHem = +d.NHem;
+          d.SHem = +d.SHem;
+        });
+        console.log(data);
+
+        // Add X axis
+        var xScale = d3.scaleTime()
+                        .domain(d3.extent(data, function(d) { return d.Year; }))
+                        .range([ 0, width - margin.right * 3 ]);
+
+        var xAxis = svg.append("g")
+                      .attr('class', 'axis')
+                      .attr("transform", "translate(0," + height + ")")
+                      .call(d3.axisBottom(xScale));
+
+        // Add Y axis
+        var yScale = d3.scaleLinear()
+                        .domain([d3.min(data, function(d) { return Math.min(d.Glob, d.NHem, d.SHem); }), 
+                                d3.max(data, function(d) { return Math.max(d.Glob, d.NHem, d.SHem); })])
+                        .range([ height, 0 ]);
+                      
+        var yAxis = svg.append("g")
+                        .attr('class', 'yaxis')
+                        .call(d3.axisLeft(yScale).tickSize(0));
+
+        yAxis.append('text')
+              .attr('x', 20)
+              .attr('y', -10)
+              .text('Deviation');
+
+        // Add the Glob
+        var globLine = svg.append("path")
+                          .datum(data)
+                          .attr("fill", "none")
+                          .attr("stroke", "#2a9d8f")
+                          .attr("stroke-width", 1.5)
+                          .attr("d", d3.line()
+                            .x(function(d) { return xScale(d.Year) })
+                            .y(function(d) { return yScale(d.Glob) })
+                            )
+                          .attr('class', 'glob')
+                          .on("mouseover", function() { 
+                                              d3.select(this).style("stroke-width", 3);
+                                              d3.select('.nhem').style("stroke", "lightgray");
+                                              d3.select('.shem').style("stroke", "lightgray");
+                                            })
+                          .on("mouseout", function() { 
+                                              d3.select(this).style("stroke-width", 1.5);
+                                              d3.select('.nhem').style("stroke", "#e76f51");
+                                              d3.select('.shem').style("stroke", "#e9c46a"); 
+                                            })
+        
+        // Add the NHem
+        var nhemLine = svg.append("path")
+                          .datum(data)
+                          .attr("fill", "none")
+                          .attr("stroke", "#e76f51")
+                          .attr("stroke-width", 1.5)
+                          .attr("d", d3.line()
+                            .x(function(d) { return xScale(d.Year) })
+                            .y(function(d) { return yScale(d.NHem) })
+                            )
+                          .attr('class', 'nhem')
+                          .on("mouseover", function() { 
+                                              d3.select(this).style("stroke-width", 3);
+                                              d3.select('.glob').style("stroke", "lightgray");
+                                              d3.select('.shem').style("stroke", "lightgray"); 
+                                            })
+                          .on("mouseout", function() { 
+                                            d3.select(this).style("stroke-width", 1.5);
+                                            d3.select('.glob').style("stroke", "#2a9d8f");
+                                            d3.select('.shem').style("stroke", "#e9c46a"); 
+                                          })
+                
+        // Add the SHem
+        var shemLine = svg.append("path")
+                          .datum(data)
+                          .attr("fill", "none")
+                          .attr("stroke", "#e9c46a")
+                          .attr("stroke-width", 1.5)
+                          .attr("d", d3.line()
+                                .x(function(d) { return xScale(d.Year) })
+                                .y(function(d) { return yScale(d.SHem) })
+                                )
+                          .attr('class', 'shem')
+                          .on("mouseover", function() { 
+                            d3.select(this).style("stroke-width", 3);
+                            d3.select('.glob').style("stroke", "lightgray");
+                            d3.select('.nhem').style("stroke", "lightgray");
+                          })
+                          .on("mouseout", function() { 
+                            d3.select(this).style("stroke-width", 1.5);
+                            d3.select('.glob').style("stroke", "#2a9d8f");
+                            d3.select('.nhem').style("stroke", "#e76f51");
+                            })
+        
+        var zeroLineStart = [xScale(parseYear(1880)), yScale(0)]
+        var zeroLineEnd = [xScale(parseYear(2014)), yScale(0)]
+        var zeroLine = svg.append('path')
+                          .attr('d', d3.line()([zeroLineStart, zeroLineEnd]))
+                          .attr('stroke', 'lightgray')
+                          .attr('opacity', '0.5')
+
+        // Add growth description
+        var growthDot = svg.append('circle')
+            .attr('cx', xScale(parseYear(2014)))
+            .attr('cy', yScale(data[data.length - 1].Glob))
+            .attr('r', 6)
+            .style('fill', 'black')
+          
+        var growth = svg.append('text')
+            .text('2014:  + ' + d3.format('.0%')((data[0].Glob - data[data.length - 1].Glob)/data[0].Glob))
+            .attr('x', xScale(parseYear(2010)))
+            .attr('y', yScale(95))
+            .attr('font-weight', 'bold')
+
+      })
+
+      
+    
+    
+
+  </script>
+</html>

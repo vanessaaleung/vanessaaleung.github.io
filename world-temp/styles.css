@@ -1,0 +1,64 @@
+html {
+  font-family: 'PT Serif', serif;    
+}
+
+.header {
+  margin-top: 60px;
+  margin-left: 40px;
+  text-align: left;
+}
+
+.header h2 {
+  margin-bottom: 0px;
+}
+
+.header p {
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+
+.description {
+  width: 70%;
+  position: absolute;
+}
+
+.description p {
+  z-index: 10;
+  position: relative;
+  top: 100px;
+  left: 100px;
+  width: 80%;
+  font-size: 12px;
+}
+
+.axis line, .axis path {
+  stroke: darkgray;
+}
+
+.axis text {
+  fill: darkgray;
+}
+
+.yaxis line, .yaxis path {
+  stroke: none;
+}
+
+.yaxis text {
+  fill: darkgray;
+}
+
+.source {
+  margin-left: 40px;
+  margin-top: 0px;
+  text-align: left;
+}
+
+.source p {
+  font-size: 12px;
+}
+
+.source a {
+  color: #2a9d8f;
+  text-decoration: none;
+  
+}
