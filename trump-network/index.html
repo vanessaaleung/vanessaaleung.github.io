@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+  <head>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link rel='stylesheet' href='styles.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="header">
+      <p id="title">Donald Trump's World</p>
+      <p id="subtitle">Understand the giant network of the American president</p>
+      <p id="source">Source: <a href="https://github.com/BuzzFeedNews/trumpworld">BuzzFeedNews</a></p>
+    </div>
+    <div id="graph"></div>
+  </body>
+  <script>
+    var margin = {top: 50, right: 30, bottom: 30, left: 60},
+    width = window.innerWidth - margin.left - margin.right,
+    height = window.innerHeight - margin.top - margin.bottom - 150;
+
+    // Append the svg object
+    var svg = d3.select("#graph")
+                .append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                  .attr("transform",
+                        "translate(" + margin.left + "," + margin.top + ")");
+
+    // Read data
+    Promise.all([
+        d3.csv("https://raw.githubusercontent.com/vanessaaleung/DS-notes/master/data-mining/data-viz/network/nodes.csv"),
+        d3.csv("https://raw.githubusercontent.com/vanessaaleung/DS-notes/master/data-mining/data-viz/network/links.csv"),
+    ]).then(function(files) {
+        console.log(files[0]);
+        console.log(files[1]);
+        var nodes = files[0];
+        var links = files[1];
+
+        // Calculate weight for each node
+        var nodeWeight = nodes.forEach(function(d) {
+          d.weight = links.filter(function(l) {
+            return l.source == d.id || l.target == d.id
+          }).length
+        });
+        
+        // Get the top 10 nodes with most connections
+        var top20Nodes = nodes.sort(function(v1, v2) {
+          return v2.weight - v1.weight;
+        }).slice(0, 20);
+
+        console.log(top20Nodes);
+
+        top20Nodes[0].image = 'https://www.nationalrighttolifenews.org/wp-content/uploads/2018/05/donaldtrump02rea.jpg';
+        top20Nodes[1].image = 'https://assets.vogue.com/photos/5c8924231494db2d2bbd9f50/3:4/w_1551,h_2068,c_limit/00-promo-jared-kushner.jpg';
+        top20Nodes[2].image = 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Ivanka_Trump_official_portrait_%28cropped%29.jpg';
+        top20Nodes[3].image = 'https://wjactv.com/resources/media/30489662-05e3-4ca0-b1d5-1d75dd569471-large1x1_DonaldTrumpJr.AP.PNG?1600726353061';
+        top20Nodes[4].image = 'https://upload.wikimedia.org/wikipedia/commons/b/b4/Stephen_miller_june_2016_cropped_corrected.jpg';
+        top20Nodes[5].image = 'https://therealdeal.com/wp-content/uploads/2011/12/Kushner178_copy.jpg';
+        top20Nodes[6].image = 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Paul_Manafort_-_15_June_2018_-_VOA_News_%28cropped%29.jpg';
+        top20Nodes[7].image = 'https://pyxis.nymag.com/v1/imgs/ad3/383/a2f4ae53afed188367d8b6ac6eb5991f7b-jeff-seassons.rsquare.w700.jpg';
+        top20Nodes[8].image = 'https://images.forwardcdn.com/image/720x/center/images/cropped/screen-shot-2017-05-10-at-101911-am-1494425979.png';
+        top20Nodes[9].image = 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Mike_Pence_official_Vice_Presidential_portrait.jpg';
+        top20Nodes[10].image = 'https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5aecc9a84bbe6f748688434d%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D271%26cropX2%3D1742%26cropY1%3D321%26cropY2%3D1791';
+        top20Nodes[11].image = 'https://biogossip.com/wp-content/uploads/2019/06/dar1.jpg';
+        top20Nodes[12].image = 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Elaine_Chao_official_portrait_2.jpg';
+        top20Nodes[13].image = 'https://www.desmogblog.com/sites/beta.desmogblog.com/files/Rebekah-Mercer.png';
+        top20Nodes[14].image = 'https://i.guim.co.uk/img/media/d7586ecb96a03501421a877c4f0a456a1bf01c1c/0_203_5508_3306/master/5508.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=67993f22f7fd75964ce8f9c48b8107c9';
+        top20Nodes[15].image = 'https://www.yydgroup.com/wp-content/uploads/2014/04/NIC_5916-e1432132855659.jpg';
+        top20Nodes[16].image = 'https://d2v9ipibika81v.cloudfront.net/uploads/sites/290/Andrew-Bremberg-Small-347x433.jpg';
+        top20Nodes[17].image = 'https://www.biography.com/.image/t_share/MTQ0Nzg0ODY3MTYxMjg1ODAw/rex_tillerson_mark_von_holden_getty_images_131942763_profile.jpg';
+        top20Nodes[18].image = 'https://live.staticflickr.com/4382/36405830872_06f63ec07f_m.jpg';
+        top20Nodes[19].image = 'https://www.theforemostfoundation.org/wp-content/uploads/2017/08/DrJamesChao-300x300.jpg';
+
+
+        var top10Nodes = top20Nodes.slice(0, 10);
+
+        // Sort nodes from less connections to more
+        nodes.sort(function(v1, v2) {
+          return v1.weight - v2.weight;
+        })
+
+        // Initialize the links
+        var link = svg.selectAll("line")
+                      .data(links)
+                      .enter()
+                      .append("line")
+                      .style("stroke", "#aaa")
+                      .style("stroke-width", "1px")
+                      .attr('class', 'link')
+
+        // Initialize the nodes
+        var node = svg.selectAll()
+                      .data(nodes)
+                      .enter()
+                      .append("svg:g")
+
+        var defs = node.append("defs");
+
+        defs.append('pattern')
+            .attr("id", function(d) { return "image"+ d.id.split(' ').join('_').toLowerCase();}  )
+            .attr("width", 1)
+            .attr("height", 1)
+            .attr("viewBox", "0 0 50 45")
+            .attr('preserveAspectRatio', "none")
+            .append("svg:image")
+            .attr("xlink:href", function(d) { 
+              imageExist = top20Nodes.filter(function(node) { 
+                return node.id == d.id 
+              }).length
+              return imageExist > 0 ? top20Nodes.filter(function(node) { return node.id == d.id })[0].image : '#eee'
+            })
+            .attr("width", 50)
+            .attr("height", 50)
+            .attr('preserveAspectRatio', "none")
+
+        var circle = node.append("circle")
+                              .attr("r", function(d) { return 12 + d.weight; })
+                              .style("fill", function(d) {
+                                imageExist = top20Nodes.filter(function(node) { return node.id == d.id }).length 
+                                return imageExist > 0 ? "url(#image"+ d.id.split(' ').join('_').toLowerCase() +")" : "lightgray"
+                              })
+                              .style("opacity", 0.9)
+                              .attr('class', 'node')
+                              .style('cursor', 'move')
+                              .on("mouseover", function(d, i)  { 
+                                d3.select(this)
+                                  .style('stroke', '#000')
+                                  .style('stroke-width', '3px')
+                                  .transition()
+                                  .attr("r", function(d) { return 32 + d.weight; })
+                                labelExist = top10Nodes.filter(function(node) {  return node.id == i.id }).length
+                                labelExist ? void(0) : d3.select(labels._groups[0][i.index]).style("visibility","visible")
+                              })
+                              .on("mouseout", function(d, i)  { 
+                                d3.select(this)
+                                  .style('stroke', 'none')
+                                  .transition()
+                                  .attr("r", function(d) { return 12 + d.weight; })
+                                d3.select(labels._groups[0][i.index])
+                                  .style("visibility","hidden")
+                              })
+                        
+        // Append labels
+        var topLabels = svg.selectAll("text")
+                      .data(top10Nodes)
+                      .enter()
+                      .append("text")
+                      .text(function (d) { return d.id; })
+                      .style("text-anchor", "middle")
+                      .style("font-size", 16)
+                      .style("fill", "darkgray");
+        
+        var labels = node.append("text")
+                        .text(function(d) { return d.id; })
+                        .style("font-size", 16)
+                        .style("visibility", "hidden")
+                        .style("fill", "black");
+
+        // Run at each iteration of the force algorithm, updating the nodes position
+        function tick() {
+          link
+              .attr("x1", function(d) { return d.source.x; })
+              .attr("y1", function(d) { return d.source.y; })
+              .attr("x2", function(d) { return d.target.x; })
+              .attr("y2", function(d) { return d.target.y; });
+
+          circle
+              .attr("cx", function (d) { return d.x = Math.max(6, Math.min(width - 6, d.x)); })
+              .attr("cy", function(d) { return d.y = Math.max(6, Math.min(height - 6, d.y)); });
+
+          topLabels.attr("x", function(d) { return d.x; })
+                    .attr("y", function(d) { return d.y + 50; });
+          
+          labels.attr("x", function(d) { return d.x - 50; })
+                .attr("y", function(d) { return d.y - 40; });
+          
+        }
+
+        // List the force
+        var simulation = d3.forceSimulation(nodes)           // Creates a new simulation with the specified array of nodes and no forces
+                            .force("link", d3.forceLink()    // Creates a new link force with the specified links
+                                            .id(function(d) { return d.id; })  // provides the id of a node
+                                            .links(links)// sets the array of links associated with this force
+                            )
+                            .force("charge", d3.forceManyBody().strength(-100))  // adds repulsion between nodes
+                            .force("center", d3.forceCenter(width / 2, height / 2))     // set the center position
+                            .on("tick", tick);             // listen for tick events as the simulation runs
+
+        function clamp(x, lo, hi) {
+          return x < lo ? lo : x > hi ? hi : x;
+        }
+
+        function dragstart() { }
+
+        function dragged(event, d) {
+          d.fx = clamp(event.x, 0, width);
+          d.fy = clamp(event.y, 0, height);
+          simulation.alpha(1)
+                    .restart();   // “reheat” the simulation when dragging a node
+        }
+
+        var drag = d3.drag()                   // apply drag behavior
+                      .on('start', dragstart)  // mousedown
+                      .on('drag', dragged);    // mousemove
+
+        circle.call(drag);
+
+    }).catch(function(err) {
+        console.log(err);
+    })
+
+      
+
+
+  </script>
+</html>

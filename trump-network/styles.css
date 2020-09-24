@@ -1,0 +1,29 @@
+html {
+  font-family: 'Lora', serif;
+}
+
+.header {
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+  /* height: 150px; */
+}
+
+.header #title {
+  font-size: 54px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.header #subtitle {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-style: italic;
+}
+
+.header #source {
+  margin-top: 3px;
+  margin-bottom: 2px;
+}
