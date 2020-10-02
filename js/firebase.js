@@ -13,3 +13,9 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+// Get a reference to the database service
+var database = firebase.database();
+
+database.ref('mobile').on('value',(snap)=>{
+  console.log(snap.val());
+});
